@@ -1,0 +1,55 @@
+﻿@model IEnumerable<SpotifyClone.Models.Song>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayoutPage1.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.M_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.M_File)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.M_Desc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Category.Cat_Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.M_Name)
+        </td>
+        <td>
+            <audio controls>
+                <source src="@Url.Content(item.M_File)" type="audio/mp3">
+                Your browser does not support the audio tag.
+            </audio>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.M_Desc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Category.Cat_Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.M_Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.M_Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.M_Id })
+        </td>
+    </tr>
+}
+
+</table>

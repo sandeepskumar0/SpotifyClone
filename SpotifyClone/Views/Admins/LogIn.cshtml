@@ -1,0 +1,66 @@
+﻿@model SpotifyClone.Models.Admin
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title> Admin LogIn</title>
+    <link href="~/Content/adminsign.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+
+
+    <nav>
+        <i class="fa-brands fa-spotify main-logo"></i>
+        <p class="brand-name">Spotify</p>
+    </nav>
+
+    <div class="main-section">
+        <h1 class="heading">Admin Login<span></span></h1>
+        @using (Html.BeginForm("LogIn", "Admins"))
+        {
+            @Html.AntiForgeryToken()
+            <div class="login-form">
+                <table>
+                    <tr>
+                        <td class="labels">Email or username</td>
+                    </tr>
+                    <tr>
+                        <td class="flds">
+                            <input type='text' class="input-fld" name="Email">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="labels">Password</td>
+                    </tr>
+                    <tr>
+                        <td class="flds">
+                            <input type="password" class="input-fld" name="Password">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="checks">
+                            <input type="checkbox" id="remember">
+                            <label for="remember">Remember me</label>
+                        </td>
+                    </tr>
+                </table>
+                <input type="submit" value="Login" class="log-in-btn" />
+                @*<button class="log-in-btn">Log In</button>*@
+
+            </div>
+        }
+        <div class="extra-option">
+            Don't have an account?
+            <a href="#" class="link">Sign up for Spotify</a>
+        </div>
+    </div>
+</body>
+</html>

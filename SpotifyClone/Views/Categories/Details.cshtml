@@ -1,0 +1,78 @@
+﻿@model SpotifyClone.Models.Category
+
+
+@{
+
+    Layout = "~/Views/Shared/_AdminLayoutPage1.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+    <!-- Include Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Custom CSS for dark theme */
+        body {
+            background-color: #343a40; /* Dark background color */
+            color: #ffffff; /* Light text color */
+        }
+
+        /* Style for the container */
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #212529; /* Darker container background color */
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2); /* Light box shadow */
+            margin-top: 50px;
+        }
+
+        /* Style for headings */
+        h4 {
+            color: #ffffff; /* Light heading text color */
+        }
+
+        /* Style for horizontal line */
+        hr {
+            border-color: #ffffff; /* Light horizontal line color */
+        }
+
+        /* Style for the Edit and Back to List links */
+        .action-link {
+            color: #ffffff; /* Light link text color */
+            text-decoration: none;
+            margin-right: 20px;
+        }
+
+            .action-link i {
+                margin-right: 5px; /* Space between icon and text */
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h4>Category</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Cat_Name)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Cat_Name)
+            </dd>
+        </dl>
+    </div>
+    <p>
+        <a href="@Url.Action("Edit", new { id = Model.Cat_Id })" class="action-link">
+            <i class="fas fa-edit"></i> Edit
+        </a>
+        <a href="@Url.Action("Index")" class="action-link">
+            <i class="fas fa-arrow-circle-left"></i> Back to List
+        </a>
+    </p>
+</body>
+</html>

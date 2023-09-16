@@ -1,0 +1,97 @@
+﻿@model SpotifyClone.Models.User
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>LogIn</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="~/Content/usersign.css" />
+</head>
+<body>
+    @*@using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h4>User</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        }*@
+
+    <nav>
+        <i class="fa-brands fa-spotify main-logo"></i>
+        <p class="brand-name">Spotify</p>
+    </nav>
+
+    <div class="main-section">
+        <h1 class="heading">Log in to <span>Spotify</span></h1>
+        @using(Html.BeginForm("LogIn","Users"))
+        {
+        @Html.AntiForgeryToken()
+    <div class="login-form">
+        <table>
+            <tr>
+                <td class="labels">Email or username</td>
+            </tr>
+            <tr>
+                <td class="flds">
+                    <input type='text' class="input-fld" name="Email">
+                </td>
+            </tr>
+            <tr>
+                <td class="labels">Password</td>
+            </tr>
+            <tr>
+                <td class="flds">
+                    <input type="password" class="input-fld" name="Password">
+                </td>
+            </tr>
+            <tr>
+                <td class="checks">
+                    <input type="checkbox" id="remember">
+                    <label for="remember">Remember me</label>
+                </td>
+            </tr>
+        </table>
+        <input type="submit" value="Login" class="log-in-btn" />
+        @*<button class="log-in-btn">Log In</button>*@
+
+    </div>
+        }
+        <div class="extra-option">
+            Don't have an account?
+            <a href="#" class="link">Sign up for Spotify</a>
+        </div>
+    </div>
+
+</body>
+</html>

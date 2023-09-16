@@ -1,0 +1,136 @@
+﻿﻿@using SpotifyClone.Models
+@{
+    int row = 0; int totalQuantity = 0; double totalAmount = 0;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<html>
+<head>
+    <link href="~/fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="~/fonts.googleapis.com/css?family=Raleway:400,500,600,700" rel="stylesheet">
+    <link href="~/fonts/fontawesome-webfont.eot" rel="stylesheet">
+</head>
+<body>
+
+
+    <section class="inner_page_head">
+        <div class="container_fuild">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="full">
+                        <h3>My Wishlist</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <br />>
+    <section class="ftco-section ftco-cart mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 ftco-animate">
+                    <div class="cart_list">
+                        <table class="table">
+                            <thead class="thead-primary">
+                                <tr class="text-center">
+                                    <th>Songs List</th>
+                                    <a href="@Url.Action("dashboard","Home")" class="fa fa-plus">Add More</a>
+                                    @*<th>image &nbsp;</th>
+        <th>Product</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Total</th>
+        <th>Remove &nbsp;</th>*@
+                                </tr>
+                            </thead>
+                            @if (Session["myWish"] != null)
+                            {
+                                <tbody>
+                                    @foreach (var item in (List<Song>)Session["myWish"])
+                                    {
+                                        <tr class="text-center">
+                                            <td class="image-prod">
+                                               <br /><br />
+                                                <div class="play">
+                                                    <span class="fa fa-play" id="playButton" style="cursor: pointer;"></span>
+                                                </div>
+                                                <audio id="audioPlayer" controls style="display: none;">
+                                                    <source src="@Url.Content(@item.M_File)" type="audio/mp3" />
+                                                 
+                                                </audio>
+
+                                            </td>
+
+                                            <td class="product-name">
+                                                <h3>@item.M_Name</h3>
+                                                <p>@item.M_Desc</p>
+                                            </td>
+
+
+                                            
+
+
+                                            <td class="product-remove">
+                                                <a type="button" class="close text-center" href="@Url.Action("RemoveFromLiked","Home", new {RowNo=row})">
+                                                    <span>&times;</span>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        row++;
+
+                                    }
+
+
+                                    <tr class="text-center">
+                                        <th></th>
+
+
+                                    </tr>
+
+
+
+                                </tbody>
+
+
+                            }
+                        </table>
+                        @if (Session["myWish"] == null || row == 0)
+                        {
+                            <div class="text-center">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="col-sm-4 ">
+                                            <center>
+                                                <marquee><h5 style="color:dimgrey">Sorry there is no liked songs in your list</h5></marquee>
+                                                <a href="@Url.Action("dashboard","Home")"><span class="btn btn-outline-danger">Add a song</span></a>
+                                            </center>
+                                        </div>
+                                        <div class="col-sm-4"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="https://kit.fontawesome.com/23cecef777.js"
+            crossorigin="anonymous"></script>
+    <script>
+            var audio = document.getElementById('audioPlayer');
+            var playButton = document.getElementById('playButton');
+
+            playButton.addEventListener('click', function () {
+                if (audio.paused) {
+                    audio.play();
+                    playButton.className = 'fa fa-pause';
+                } else {
+                    audio.pause();
+                    playButton.className = 'fa fa-play';
+                }
+            });
+    </script>
+</body>
+</html>

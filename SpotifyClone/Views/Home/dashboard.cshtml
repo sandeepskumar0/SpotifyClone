@@ -1,0 +1,167 @@
+﻿@model SpotifyClone.Models.SongModel
+
+@{
+    ViewBag.Title = "dashboard";
+}
+<html>
+<head>
+    <link rel="stylesheet" href="~/Content/dash.css" />
+
+</head>
+
+<body>
+
+    <div class="sidebar">
+        <div class="logo">
+            <a href="#">
+                <img src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_CMYK_Green.png" alt="Logo" />
+            </a>
+        </div>
+
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="@Url.Action("Index","Home")">
+                        <span class="fa fa-home"></span>
+                        <span>Home</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="fa fa-search"></span>
+                        <span>Filter</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="fa fas fa-book"></span>
+                        <span>Your Library</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="@Url.Action("Liked","Home")">
+                        <span class="fa fas fa-plus-square"></span>
+                        <span>Liked Songs</span>
+                    </a>
+                </li>
+
+                <li>
+                    @*<a href="#">
+                        <span class="fa fas fa-heart"></span>
+                        <span>Liked Songs</span>
+                    </a>*@
+                </li>
+            </ul>
+        </div>
+
+        <div class="policies">
+            <ul>
+                <li>
+                    <a href="#">Cookies</a>
+                </li>
+                <li>
+                    <a href="#">Privacy</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <div class="topbar">
+            <div class="prev-next-buttons">
+                <button type="button" class="fa fas fa-chevron-left"></button>
+                <button type="button" class="fa fas fa-chevron-right"></button>
+            </div>
+
+            
+        </div>
+
+        <div class="spotify-playlists">
+            <h2>Good Morning !</h2>
+            <div class="container">
+                <button class="btn btn-outline-success">Filter</button>
+                @foreach (var c in Model.cat)
+                {
+
+
+
+                    <a href="@Url.Action("dashboard", "Home", new {id=c.Cat_Id })" type="button"class="btn btn-outline-danger"> @c.Cat_Name</a>
+                }
+            </div>
+
+
+            <div class="container">
+                <div class="row">
+
+                    @foreach (var o in Model.son)
+                    {
+                        <div class="col-md-2  mb-4">
+                            <div class="list">
+                                <div class="item">
+                                    <img src="https://i.scdn.co/image/ab67616d0000b2733b5e11ca1b063583df9492db" />
+                                    <div class="play">
+                                        <span class="fa fa-play" id="playButton" style="cursor: pointer;"></span>
+                                    </div>
+                                    <h4>@o.M_Name</h4>
+                                    <p>@o.M_Desc</p>
+                                    <a  href="@Url.Action("AddtoLiked", "Home", new { id = o.M_Id })"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
+</svg></a>
+                                </div>
+
+                                <audio id="audioPlayer" controls style="display: none;">
+                                    <source src="@Url.Content(o.M_File)" type="audio/mp3">
+                                    Your browser does not support the audio element.
+                                </audio>
+                          
+
+
+
+                            </div>
+                        </div>
+
+                    }
+                </div>
+            </div>
+
+
+            
+
+
+
+            @*<div class="preview">
+                <div class="text">
+                    <h6>Preview of Spotify</h6>
+                    <p>Sign up to get unlimited songs and podcasts with occasional ads. No credit card needed.</p>
+                </div>
+                <div class="button">
+                    <button type="button">Sign up free</button>
+                </div>
+            </div>*@
+        </div>
+
+        <script src="https://kit.fontawesome.com/23cecef777.js"
+                crossorigin="anonymous"></script>
+        <script>
+            var audio = document.getElementById('audioPlayer');
+            var playButton = document.getElementById('playButton');
+
+            playButton.addEventListener('click', function () {
+                if (audio.paused) {
+                    audio.play();
+                    playButton.className = 'fa fa-pause';
+                } else {
+                    audio.pause();
+                    playButton.className = 'fa fa-play';
+                }
+            });
+        </script>
+</body>
+</html>

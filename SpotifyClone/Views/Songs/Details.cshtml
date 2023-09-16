@@ -1,0 +1,51 @@
+﻿@model SpotifyClone.Models.Song
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayoutPage1.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Song</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.M_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.M_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.M_File)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.M_File)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.M_Desc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.M_Desc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category.Cat_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category.Cat_Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.M_Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

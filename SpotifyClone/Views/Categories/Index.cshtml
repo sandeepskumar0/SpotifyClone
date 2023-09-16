@@ -1,0 +1,49 @@
+﻿@model IEnumerable<SpotifyClone.Models.Category>
+
+
+@{
+
+    Layout = "~/Views/Shared/_AdminLayoutPage1.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <!-- Include Bootstrap CSS (assumes you have Bootstrap installed) -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <p>
+            @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+        </p>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Cat_Name)
+                    </th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Cat_Name)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Cat_Id }, new { @class = "btn btn-warning" })
+                            @Html.ActionLink("Details", "Details", new { id = item.Cat_Id }, new { @class = "btn btn-info" })
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Cat_Id }, new { @class = "btn btn-danger" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,211 @@
+﻿<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/db.onlinewebfonts.com/c/3d85dc16e94da9358d451666fdbc3398?family=Circular+Medium" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+    <header class="navbar navbar-dark navbar-fixed-top" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <a href="#">
+                    <span class="navbar-logo">Spotify</span>
+                </a>
+            </div>
+
+            <nav class="collapse navbar-collapse" id="navbar-nav" role="">
+                <ul class="nav navbar-nav navbar-right nav-main">
+                    <li class="hidden">
+                        @*<a href="#" id="nav-link-Explore">
+                Explore
+            </a>*@
+                    </li>
+                    @*<li>
+                        <a href="#" id="nav-link-premium">
+                            Contact
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" id="nav-link-help">
+                            About
+                        </a>
+                    </li>*@
+                    <li>
+                        <a href="@Url.Action("LogIn","Admins")" id="nav-link-download">
+                            Admin
+                        </a>
+                    </li>
+                    @if (Session["ID"] == null)
+                    {
+                        <li role="separator" class="divider"></li>
+                        <li>
+                            <a href="@Url.Action("SignUp","Users")" id="nav-link-sign-up">
+                                Sign up
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("LogIn","Users")" id="header-login-link">
+                                Log In
+                            </a>
+                        </li>
+                    }
+                        <li>
+                            @if (Session["ID"] != null)
+                            {
+                                <a class="nav-link" href="@Url.Action("Logout","Users")">Logout</a>
+                                @*<b>@HttpContext.Current.User.Identity.Name</b>*@
+                            }
+                        </li>
+                    </ul>
+            </nav>
+        </div>
+    </header>
+    @RenderBody()
+    <!-- section: footer -->
+    <footer role="contentinfo" class="footer footer-highlight-aquamarine">
+        <div class="container">
+            <nav class="row">
+                <!-- section: footer: icon -->
+                <div class="col-xs-12 col-md-2">
+                    <div class="footer-logo">
+                        <a href="#">Spotify</a>
+                    </div>
+                </div>
+                <!-- section: footer: 1st column -->
+                <div class="col-xs-6 col-sm-4 col-md-2">
+                    <h3 class="nav-title">Company</h3>
+                    <ul class="nav">
+                        <li>
+                            <a href="#" id="nav-link-about">
+                                About
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" id="nav-link-jobs">
+                                Jobs
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" id="nav-link-press">
+                                Press
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" id="nav-link-news">
+                                News
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- section: footer: 2nd column -->
+                <div class="col-xs-6 col-sm-4 col-md-2">
+                    <h3 class="nav-title">Communities</h3>
+                    <ul class="nav">
+                        <li>
+                            <a href="#" id="nav-link-artists">
+                                For Artists
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#" id="nav-link-developers">
+                                Developers
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#" id="nav-link-brands">
+                                Brands
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- section: footer: 3rd column -->
+                <div class="col-xs-6 col-sm-4 col-md-2">
+                    <h3 class="nav-title">Useful Links</h3>
+                    <ul class="nav">
+                        <li>
+                            <a href="#" id="nav-link-help">
+                                Help
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" id="nav-link-gift">
+                                Gift
+                            </a>
+                        </li>
+                        <li class="hidden-xs">
+                            <a href="#" id="nav-link-play">
+                                Web Player
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- section: footer: social -->
+                <div class="col-xs-12 col-md-4 col-social">
+                    <ul class="nav">
+                        <li>
+                            <a href="#">
+                                <img alt="instagram" src="https://cdn-icons-png.flaticon.com/512/87/87390.png">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img alt="twitter" src="https://cdn-icons-png.flaticon.com/512/733/733635.png">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img alt="facebook" src="https://cdn-icons-png.flaticon.com/512/59/59439.png">
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </nav>
+            <!-- section: footer: small social -->
+            <nav class="row row-small">
+                <div class="col-xs-8 col-md-6">
+
+                    <ul class="nav nav-small">
+                        <li>
+                            <a href="#">Legal</a>
+                        </li>
+                        <li>
+                            <a href="#">Privacy</a>
+                        </li>
+                        <li>
+                            <a href="#">Cookies</a>
+                        </li>
+                        <li>
+                            <a href="#">About Ads</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-xs-4 col-md-6 text-right">
+                    <a class="market" href="#" title="Click to change">
+                        <div class="media">
+                            <div class="media-body media-middle">
+                                USA
+                            </div>
+                            <div class="media-right media-middle">
+                                <span class="media-object flag-icon flag-icon-us"></span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <small class="copyright">&copy; 2023 Spotify Clone</small>
+                </div>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- jQuery library -->
+   
+</body>
+</html>
+      
+ 
